@@ -1,44 +1,24 @@
 
-
-$primary_light_color: #fff;
-$primary_dark_color:#000;
-$default-font-size:16;
+@import './sass/abstracts/variables.scss';
+@import './sass/base//basic.scss';
+@import './sass/base/animations.scss';
 @function font_size_cal($desire_font_size){
     @return ($desire_font_size/$default-font-size);
 }
 @mixin white_color{
     color:#fff;
 }
+.App{
+    display: flex;
+    height: 100vh;
+    width:100vw;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, rgb(101, 233, 130),rgb(47, 122, 4));
+    
+}
 :root{
     --color:red;
-}
-@mixin reset{
-    margin:0;
-    padding: 0;
-    box-sizing: inherit;
-
-}
-*,
-*::after,
-*::before {
-   @include reset
-}
-a{
-    text-decoration: none;
-}
-html{
-    font-size: font_size_cal(10) *100%
-}
-body{
-    font-family: 'Lato',sans-serif ;
-    font-weight: 400;
-    font-size: 1.6rem;
-    line-height: 1.7;
-    color: #777;
-    /* color: var(--color); */
-    padding: 3rem;
-    box-sizing:border-box;
-
 }
 
 .header{
@@ -106,15 +86,7 @@ body{
     }
 }
 
-.btn:link,
-.btn:visited{
-    /* height:4rem;
-    width:20rem; */
-    padding: 1rem 4rem;
-    border-radius: 3.5rem;
-    display: inline-block;
-    position: relative;
-}
+
 
 .btn{
     &::after{
@@ -133,36 +105,66 @@ body{
         transform: scale(1.2);
         opacity: 0;
     }
-}
-
-
-
-
-
-
-@keyframes HeadTitleMove{
-
-    0%{
-        opacity: 0;
-        transform: translateX(20rem);
-    }
-    80%{
-
-    }
-    100%{
-    opacity: 1;
-    }
-}
-
-
-
-.test{
-    /* background: red; */
-    padding: 30px;
-    width: 100px;
+    &:link,
+    &:visited{
+    /* height:4rem;
+    width:20rem; */
+    padding: 1rem 4rem;
+    border-radius: 3.5rem;
     display: inline-block;
+    position: relative;
+}
+}
+// .test{
+//     /* background: red; */
+//     padding: 30px;
+//     width: 100px;
+//     display: inline-block;
+// }
+
+// .test {
+//      & p:not(:first-child){
+//         color:red !important;
+//     }
+// }
+
+[class ^='tes']{
+    
+    transform: translateY(10px);
+    background-image: linear-gradient(to right, #6fabefb2,#03062cda);    
+    font-size: 60px;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
-.test p:first-child{
-    color:red !important;
+.card{
+    width: 200px;
+    height: 400px;
+    position: relative;
+    perspective: 1500px;    
+    &__side{
+        transition: all 1s ease;
+        position: absolute;        
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 400px;
+        position: absolute;
+        backface-visibility: hidden;
+        color: black;
+        &-front{
+            background-color: royalblue;            
+        }
+        &-back{
+            background-color: white;
+            transform: rotateY(180deg);
+        }
+      }
+      &:hover &__side-front{
+        transform: rotateY(180deg);
+      }
+      &:hover &__side-back{
+        transform: rotateY(0deg);
+      }
 }
+    
